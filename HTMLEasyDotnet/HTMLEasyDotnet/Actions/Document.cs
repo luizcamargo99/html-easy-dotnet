@@ -33,8 +33,8 @@ namespace HTMLEasyDotnet.Actions
             }
             
             int startIndexElement = GetStartElement(document, index);
-            int endIndexEleement = document.IndexOf(_minusSign, index);
-            element.InnerHTML = document.Substring(startIndexElement, endIndexEleement - startIndexElement);
+            int endIndexElement = document.IndexOf(_minusSign, index);
+            element.InnerHTML = document.Substring(startIndexElement, endIndexElement - startIndexElement);
             element.NodeName = GetNodeName(element.InnerHTML);
 
             int startIndexClass = document.IndexOf(_classText, startIndexElement);
@@ -62,11 +62,11 @@ namespace HTMLEasyDotnet.Actions
             return startIndexElement;
         }
 
-        private static string GetNodeName(string htmlText)
+        private static string GetNodeName(string text)
         {
             var name = string.Empty;
 
-            foreach (var letter in htmlText)
+            foreach (var letter in text)
             {
                 if (string.IsNullOrWhiteSpace(letter.ToString()))
                 {
