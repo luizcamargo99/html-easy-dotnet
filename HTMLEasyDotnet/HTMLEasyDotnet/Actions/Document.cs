@@ -25,7 +25,7 @@ namespace HTMLEasyDotnet.Actions
         {
             HTMLElement element = new HTMLElement { Id = id };
 
-            var index = document.IndexOf($"id=\"{id}\"");
+            int index = document.IndexOf($"id=\"{id}\"");
 
             if (index == _invalidNumber)
             {
@@ -64,9 +64,9 @@ namespace HTMLEasyDotnet.Actions
 
         private static string GetNodeName(string text)
         {
-            var name = string.Empty;
+            string name = string.Empty;
 
-            foreach (var letter in text)
+            foreach (char letter in text)
             {
                 if (string.IsNullOrWhiteSpace(letter.ToString()))
                 {
