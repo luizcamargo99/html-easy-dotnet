@@ -26,6 +26,7 @@ namespace HTMLEasyDotnet.Tests
         [InlineData("https://www.dicio.com.br/", "header", "home")]
         [InlineData("https://luizcamargo.dev/", "linkedin", "round_picture contacts")]
         [InlineData("https://github.com/", "start-of-content", "show-on-focus")]
+        [InlineData("https://github.com/luizcamargo99/html-easy-dotnet", "js-repo-pjax-container", null)]
         public void TestClassNameGetElementByIdSuccess(string url, string id, string resultExpected)
         {
             var document = Document.Load(url);

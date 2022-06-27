@@ -34,13 +34,22 @@ namespace HTMLEasyDotnet.Actions
             
             int startIndexElement = GetStartElement(document, index);
             int endIndexElement = document.IndexOf(_minusSign, index);
-            element.InnerHTML = document.Substring(startIndexElement, endIndexElement - startIndexElement);
+
+            element.InnerHTML = document.Substring(startIndexElement, endIndexElement - startIndexElement)
+                .Replace(Environment.NewLine, string.Empty)
+                .TrimEnd();
+
             element.NodeName = GetNodeName(element.InnerHTML);
 
             int startIndexClass = document.IndexOf(_classText, startIndexElement);
-            int endIndexClass = document.IndexOf(_doubleQuotes, startIndexClass + _classText.Length);
-            element.ClassName = document.Substring(startIndexClass + _classText.Length, endIndexClass - (startIndexClass + _classText.Length));
-            element.ClassList = element.ClassName.Split();
+
+            if (startIndexClass < endIndexElement)
+            {
+                int endIndexClass = document.IndexOf(_doubleQuotes, startIndexClass + _classText.Length);
+                element.ClassName = document.Substring(startIndexClass + _classText.Length, endIndexClass - (startIndexClass + _classText.Length));
+                element.ClassList = element.ClassName.Split();
+            }
+
 
             return element;
         }
